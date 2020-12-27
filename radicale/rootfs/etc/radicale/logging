@@ -1,0 +1,22 @@
+[loggers]
+keys = root
+
+[handlers]
+keys = file
+
+[formatters]
+keys = full
+
+[logger_root]
+# Change this to DEBUG or INFO for higher verbosity.
+level = DEBUG
+handlers = file
+
+[handler_file]
+class = StreamHandler
+# Specify the output file here.
+args = ()
+formatter = full
+
+[formatter_full]
+format = %(asctime)s - [%(thread)x] %(levelname)s: %(message)s

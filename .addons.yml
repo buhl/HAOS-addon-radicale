@@ -1,0 +1,7 @@
+---
+channel: stable
+addons:
+  radicale:
+    repository: buhl/HAOS-addon-radicale
+    target: radicale
+    image: buhl/radicale-{arch}

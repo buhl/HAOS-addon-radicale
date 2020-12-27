@@ -1,0 +1,68 @@
+{
+    "name": "Radicale",
+    "version": "3.0.6-r0",
+    "slug": "radicale",
+    "description": "Free and Open-Source CalDAV and CardDAV Server",
+    "url": "https://github.com/buhl/HAOS-addon-radicale",
+    "arch": ["aarch64", "amd64", "armhf", "armv7", "i386"],
+    "startup": "services",
+    "webui": "http://[HOST]:[PORT:5232]/",
+    "boot": "auto",
+    "image": "buhl/radicale-{arch}",
+    "apparmor": true,
+    "init": false,
+    "stage": "experimental",
+    "map": [
+        "ssl:ro",
+        "addons:rw"
+    ],
+    "options": {
+        "credentials": [
+            {"username": "user1", "password": "password1"}
+        ],
+        "rights_type": "from_file",
+        "rights_file": [
+            {
+                "section": "root",
+                "user": ".+",
+                "collection": "",
+                "permissions": "R"
+            },
+            {
+                "section": "principal",
+                "user": ".+",
+                "collection": "{user}",
+                "permissions": "RW"
+            },
+            {
+                "section": "calendars",
+                "user": ".+",
+                "collection": "{user}/[^/]+",
+                "permissions": "rw"
+            }
+        ],
+        "encryption_method": "md5"
+    },
+    "ports": {
+        "5232/tcp": 5232
+    },
+    "ports_description": {
+        "5232/tcp": "Radicale http port"
+    },
+    "schema": {
+        "credentials": [
+            { "username": "str", "password": "password" }
+        ],
+        "rights_type": "list(authenticated|owner_only|owner_write|from_file)?",
+        "rights_file": [
+           {
+               "section": "match([a-zA-Z]+)?",
+               "user": "str?",
+               "collection": "str?",
+               "permissions": "match([R|r|i]{0,1}[W|w]{0,1})?"
+           }
+        ],
+        "log_level": "list(debug|info|warning|error|fatal|critical)?",
+        "encryption_method": "list(plain|md5|bcrypt)?"
+    }
+}

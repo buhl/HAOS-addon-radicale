@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bashio
+bashio::log.info "Starting radical"
+
+exec /usr/bin/radicale --config /addons/radicale/config

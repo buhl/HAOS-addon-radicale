@@ -1,0 +1,31 @@
+{
+    "addon": {
+        "port": 5232
+    },
+    "credentials": [
+        {"username": "user1", "password": "$apr1$e/P2LXL6$ftPekvI2mLieC9D2E3EMp."}
+    ],
+    "rights_type": "from_file",
+    "rights_file": [
+        {
+            "section": "root",
+            "user": ".+",
+            "collection": "",
+            "permissions": "R"
+        },
+        {
+            "section": "principal",
+            "user": ".+",
+            "collection": "{user}",
+            "permissions": "RW"
+        },
+        {
+            "section": "calendars",
+            "user": ".+",
+            "collection": "{user}/[^/]+",
+            "permissions": "rw"
+        }
+    ],
+    "log_level": "info",
+    "encryption_method": "md5"
+}

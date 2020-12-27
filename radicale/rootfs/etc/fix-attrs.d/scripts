@@ -1,0 +1,4 @@
+/etc/radicale/config false root 0644 0755
+/etc/radicale/logging false root 0644 0755
+/etc/radicale/rights false root 0644 0755
+/etc/radicale/users false root 0644 0755
